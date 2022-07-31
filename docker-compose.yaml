@@ -3,7 +3,7 @@ version: '3'
 services:
   cli:
     build: .
-    container_name: 'pwsh-spo'
+    container_name: 'pwsh-exo'
     tty: true
     volumes:
       - ./scripts:/usr/src/scripts
