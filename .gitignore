@@ -1,1 +1,4 @@
 *.env
+scripts/*.crt
+scripts/*.csr
+scripts/*.key
