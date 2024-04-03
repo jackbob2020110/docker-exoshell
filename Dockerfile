@@ -1,14 +1,9 @@
-FROM mcr.microsoft.com/powershell:lts-7.2-ubuntu-20.04
+FROM mcr.microsoft.com/azure-powershell:latest
 
-WORKDIR /usr/src/scripts
+WORKDIR /app
 
-RUN pwsh -c "Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted"
-RUN pwsh -c "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12"
+#RUN pwsh -c "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12"
 
-RUN pwsh -c "Install-Module -Name PSWSMan -Force"
-RUN pwsh -c "Install-WSMan"
-RUN pwsh -c "Install-Module -Name ExchangeOnlineManagement -RequiredVersion 2.0.5 -Force"
-
-COPY . .
+RUN pwsh -c "Install-Module -Name PSWSMan -Force;Install-WSMan -Force;Install-Module -Name ExchangeOnlineManagement -Force;Install-Module -Name Microsoft.Graph -Force"
 
 CMD ["pwsh"]
